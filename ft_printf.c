@@ -10,25 +10,62 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Libft2.0_git/libft.h"
+#include "libft/libft.h"
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdio.h>
 
-int	handle_char(int c, int bytes)
+int	handle_char(int c)
 {
 	const char	internal = (char)c;
 
-	return (bytes = write(1, &internal, 1));
+	return (write(1, &internal, 1));
 }
 
-int	handle_flag(const char *format, va_list args, int bytes)
+int	handle_string(char *s)
+{
+	return (write(1, s, ft_strlen(s)));
+}
+
+int	print_int_base(int x, char *radix)
+{
+	const int	base = ft_strlen(radix);
+	int	ret;
+
+	ret = 0;
+	if (x > base)
+		ret += print_int_base(x / base, radix);
+	return (ret + write(1, &radix[x % base], 1));
+}
+
+int	handle_hexa(int x)
+{
+	char	*radix = "0123456789abcdef";
+	const int	base = ft_strlen(radix);
+	int	ret;
+
+	ret = 0;
+	if (x > 15)
+		ret += handle_hexa(x / 16);
+	return (ret + write(1, &radix[x % base], 1));
+}
+
+int	handle_ptr(void *p)
+{
+	handle
+
+int	handle_flag(const char *format, va_list args)
 {
 	if (*format == 'c')
-	{
-		bytes = handle_char(va_arg(args, int), bytes);
-	}
-	return (bytes);
+		return (handle_char(va_arg(args, int)));
+	else if (*format == 's')
+		return (handle_string(va_arg(args, char *)));
+	else if (*format == 'p')
+		return (handle_ptr(va_arg(args, void *)));
+	else if (*format == 'x' || *format == 'X')
+		return (handle_hexa(va_arg(args, int)));
+	else
+		return (-1);
 }
 
 int	ft_printf(const char *format, ...)
@@ -42,7 +79,7 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%')
 		{
-			bytes = handle_flag(++format, args, bytes);
+			bytes += handle_flag(++format, args);
 			++format;
 		}
 		else 	
