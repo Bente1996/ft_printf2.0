@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdint.h>
 
 int	handle_char(int c)
 {
@@ -38,21 +39,14 @@ int	print_int_base(int x, char *radix)
 	return (ret + write(1, &radix[x % base], 1));
 }
 
-int	handle_hexa(int x)
-{
-	char	*radix = "0123456789abcdef";
-	const int	base = ft_strlen(radix);
-	int	ret;
-
-	ret = 0;
-	if (x > 15)
-		ret += handle_hexa(x / 16);
-	return (ret + write(1, &radix[x % base], 1));
-}
-
 int	handle_ptr(void *p)
 {
-	handle
+	if (p == NULL)
+		return (handle_string("(nil)"));
+	handle_string("0x");
+	return (2 + print_int_base((uintptr_t)p, "0123456abcdef"));
+}
+
 
 int	handle_flag(const char *format, va_list args)
 {
@@ -62,8 +56,14 @@ int	handle_flag(const char *format, va_list args)
 		return (handle_string(va_arg(args, char *)));
 	else if (*format == 'p')
 		return (handle_ptr(va_arg(args, void *)));
-	else if (*format == 'x' || *format == 'X')
-		return (handle_hexa(va_arg(args, int)));
+	else if (*format == 'd' || *format == 'i')
+		return (print_int_base(va_arg(args, int), "0123456789"));
+	else if (*format == 'u')
+		return (print_int_base(va_arg(args, unsigned int), "0123456789"));
+	else if (*format == 'x')
+		return (print_int_base(va_arg(args, int), "0123456abcdef"));
+	else if (*format == 'X')
+		return (print_int_base(va_arg(args, int), "0123456ABCDEF"));
 	else
 		return (-1);
 }
@@ -88,17 +88,3 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (bytes);
 }
-
-int	main()
-{
-	char	c = 'B';
-	char	*format = "%c een string";
-	int bytes = 0;
-	bytes = ft_printf(format, c);
-	printf("\n%d\n", bytes);
-	bytes = printf(format, c);
-	printf("\n%d\n", bytes);
-	return (0);
-}
-
-

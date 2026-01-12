@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                            ::::::::        */
-/*   ft_printf.h                                             :+:    :+:       */
+/*   main.c                                                  :+:    :+:       */
 /*                                                          +:+               */
 /*   By: bede-kon <bede-kon@student.codam.nl>              +#+                */
 /*                                                        +#+                 */
-/*   Created: 2025/11/15 16:18:56 by bede-kon            #+#    #+#           */
-/*   Updated: 2025/11/15 16:20:43 by bede-kon            ########   odam.nl   */
+/*   Created: 2026/01/12 13:28:00 by bede-kon            #+#    #+#           */
+/*   Updated: 2026/01/12 13:33:24 by bede-kon            ########   odam.nl   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+#include "ft_printf.h"
+#include <stdio.h>
 
-#include <stdarg.h>
-
-int	handle_char(int c);
-int	handle_string(char *s);
-int	printf_int_base(int x, char *radix);
-int	handle_ptr(void *p);
-int	handle_flag(const char *format, va_list args);
-int	ft_printf(const char *format, ...);
-
-#endif
+int	main()
+{
+	char	c = 'B';
+	char	*format = "%c een string";
+	int bytes = 0;
+	bytes = ft_printf(format, c);
+	printf("\n%d\n", bytes);
+	bytes = printf(format, c);
+	printf("\n%d\n", bytes);
+	return (0);
+}
