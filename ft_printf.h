@@ -15,10 +15,10 @@
 
 #include <stdarg.h>
 
-int	handle_char(int c);
-int	handle_string(char *s);
-int	printf_int_base(int x, char *radix);
-int	handle_ptr(void *p);
+int	print_char(int c);
+int	print_string(char *s);
+int	print_int_base(long n, char *radix);
+int	print_address(void *p);
 int	handle_flag(const char *format, va_list args);
 int	ft_printf(const char *format, ...);
 

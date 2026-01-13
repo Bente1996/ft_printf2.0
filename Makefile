@@ -1,7 +1,9 @@
 NAME := libftprintf.a
 EXEC_NAME := ft_printf
+LIBFT_A := libft/libft.a
 HEADERFILES := libft.h ft_printf.h
-SRCFILES := ft_printf.c
+SRCFILES := ft_printf.c \
+			ft_printf_utils.c
 OBJFILES := $(SRCFILES:.c=.o)
 DEPDIR := dep/
 DEPFILES := $(addprefix $(DEPDIR),$(SRCFILES:.c=.d))
