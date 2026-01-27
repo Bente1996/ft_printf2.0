@@ -15,6 +15,6 @@ Resources:
 - The printf Wikipedia page.
 - No AI was used.
 
-  Algorithm and data structure:
-  - I used a recursive algorithm to format integers. I did this because it was a very concise approach and because I thought it was good to practise the use of recursion.
-  - Just like the original printf, my function takes a va_list type (internally a struct) as a parameter. For the rest I only used basic arithmetic data types (int and char) because that was sufficient.
+Algorithm and data structure:
+- I used a recursive algorithm to format integers. I did this because it was a very concise approach and because I thought it was good to practise the use of recursion.
+- Just like the original printf, my function takes a va_list type (internally a struct) as a parameter. For the rest I only used basic arithmetic data types (int and char) because that was sufficient.
