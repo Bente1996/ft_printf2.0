@@ -7,15 +7,18 @@ This function formats text and writes it to the standard output.
 Ft_printf only handles the following conversions: c, s, p, d, i, u, x, X and %.
 Ft_printf doesn't handle buffer management and undefined behaviour in the same way as the original printf.
 
+
 Instructions:
 
 The project includes a makefile, so you can just compile it by typing 'make' in the command line.
 If you want to compile and run the program including the main.c file, type 'make run' instead.
 
+
 Resources:
 - I had done this project already a year ago, so I relied a lot on my memories from past experience.
 - The printf Wikipedia page.
 - No AI was used.
+
 
 Algorithm and data structure:
 - I used a recursive algorithm to format integers. I did this because it was a very concise approach and because I thought it was good to practise the use of recursion.
