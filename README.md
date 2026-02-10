@@ -3,7 +3,7 @@
 
 Description:
 
-The ft_printf project asks you to recode a simplified version of the C standard library (libc) function: printf (which can also be used as a shell command in Linux).
+The ft_printf project asks you to recode a simplified version of the C standard library (libc) function: printf.
 This function formats text and writes it to the standard output.
 Ft_printf only handles the following conversions: c, s, p, d, i, u, x, X and %.
 Ft_printf doesn't handle buffer management and undefined behaviour in the same way as the original printf.
@@ -16,11 +16,10 @@ If you want to compile and run the program including the main.c file, type 'make
 
 
 Resources:
-- I had done this project already a year ago, so I relied a lot on my memories from past experience.
 - The printf Wikipedia page, printf on cppreference.com and man printf.
 - No AI was used.
 
 
 Algorithm and data structure:
 - I used a recursive algorithm to format integers. I did this because it was a very concise approach and because I thought it would be good to practise the use of recursion.
-- Just like the original printf, my function takes a va_list type (internally a struct) as a parameter. Other than that I only used basic arithmetic data types (int and char) because that was sufficient.
+- Just like the original printf, my function takes a va_list type (internally a struct) as a parameter. Other than that I only used primitive data types (int and char) because that was sufficient.
