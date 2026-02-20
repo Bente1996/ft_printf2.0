@@ -37,7 +37,7 @@ int	print_int_base(long n, char *radix)
 	if (n < 0)
 	{
 		n = -n;
-		ret += write(1, &"-", 1);
+		ret += write(1, "-", 1);
 	}
 	if (n >= base)
 		ret += print_int_base(n / base, radix);
